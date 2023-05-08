@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<div id="registerProduct">
+    <form method="POST" id="registerProductForm" enctype="multipart/form-data">
+        <div>
+            <p>상품이름 : <input id="productName"></p>
+            <p>상품사진선택 : <input type="file" id="chooseImage"></p>
+            <p><div id="uploadImg"><img th:style="${'width:150px'}"></div>이미지 미리보기</p>
+            <p>상품가격 : <input id="productPrice"></p>
+            <p>상품내용 : <input id="productContents"></p>
+            <p>비고 : <input id="productEtc"></p>
+            <p>상품 할인 :
+                <select name="할인 선택지" id="productDiscountCode">
+                    <option value="percent">%</option>
+                    <option value="price">price</option>
+                    <option value="none">none</option>
+                </select></p>
+            <p>상품 할인률(가격) : <input id="productDiscount"></p>
+        </div>
+        <button type="button" id="registerProductBtn">등록</button>
+        <button type="button" id="backToList">뒤로가기</button>
+    </form>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/product/registerProduct.js}"></script>
+</html>

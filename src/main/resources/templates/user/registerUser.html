@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="registerUser">
+    <form method="POST" id="registerUserForm" enctype="multipart/form-data">
+        <div>
+            <!--id중복확인-->
+            <p>아이디 : <input id="usersId"><!--<input type="hidden" id="usersSeq"></p>-->
+            <p>비밀번호 : <input id="password"></p>
+            <p>주소 : <input id="address">
+                <button type="button" id="search_daum">다음주소찾기</button>
+            </p>
+            <p>이름 : <input id="usersName"></p>
+            <p>나이 : <input id="age"></p>
+            <p>프로필 사진 : <input type="file" id="chooseImage"></p>
+            <p><div id="uploadImg"><img th:style="${'width:150px'}"></div>이미지 미리보기</p>
+        </div>
+        <button type="button" id="registerUserBtn">등록</button>
+    </form>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/user/registerUser.js}"></script>
+</html>
