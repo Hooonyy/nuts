@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="userInfo">
+    <form method="POST" id="userUpdateForm" enctype="multipart/form-data">
+        <div id="userData">
+            <input id="usersSeq" type="hidden" th:value="${userInfo.usersSeq}">
+            <p>ID :
+                <th:block th:text="${userInfo.usersId}"></th:block>
+            </p>
+            <p>이름 : <input id="usersName" type="text" size="30" th:value="${userInfo.usersName}"></p>
+            <p>나이 : <input id="age" type="text" size="30" th:value="${userInfo.age}"></p>
+            <p>주소 : <input id="address" type="text" size="30" th:value="${userInfo.address}">
+                <button type="button" id="search_daum">다음주소찾기</button>
+            </p>
+            <p>프로필사진 : <img id="filePath" th:src="${userInfo.filePath}" th:style="${'width:50px'}"></p>
+            <p>다운로드 : <a th:if="${userInfo}" th:href="@{'/download'(filePath=${userInfo.filePath})}" th:text="${userInfo.filePath}" target="_blank"></a></p>
+            <p>업로드 : <input type="file" id="chooseImage"></p>
+            <button type="button" id="backToList">뒤로가기</button>
+        </div>
+    </form>
+    <button type="button" id="updateUserInfo">수정</button>
+    <button type="button" id="deleteUser">삭제</button>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/user/userInfo.js}"></script>
+</html>

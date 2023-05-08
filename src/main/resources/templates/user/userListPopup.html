@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="userListPopup">
+    <table id="userListTable">
+        <colgroup>
+            <col style="width: 13%">
+            <col style="width: 13%">
+            <col style="width: 13%">
+            <col style="width: 13%">
+            <col style="width: 13%">
+            <col style="width: 13%">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>seq</th>
+            <th>id</th>
+            <th>name</th>
+            <th>address</th>
+            <th>age</th>
+            <th>선택버튼</th>
+        </tr>
+        </thead>
+        <tbody id="" style="text-align: center">
+        </tbody>
+    </table>
+    <div>
+        <div id="pagingBox" style="text-align: center">
+            <div id="pagination"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" th:src="@{/js/user/usetListPopup.js}"></script>
+</html>
+<style>
+    li {
+        list-style: none;
+        margin: 0px 10px 0px 10px;
+        padding: 0px 10px 0px 10px;
+        border: 0px;
+        float: left;
+    }
+</style>

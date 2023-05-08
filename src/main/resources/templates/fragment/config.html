@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="">
+<th:block th:fragment="configFragment">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test</title>
+
+    <!-- 컨텐츠 페이지의 js -->
+    <th:block layout:fragment="script"></th:block>
+    <!-- 공통 js -->
+    <th:block th:replace="common/scripts" th:src="@{/js/user/userList.js}"></th:block>
+
+  </head>
+</th:block>
+</html>

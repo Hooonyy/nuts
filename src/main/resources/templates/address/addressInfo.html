@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<head>
+
+    <meta charset="UTF-8">
+    <title>userList</title>
+</head>
+<body>
+<div id="addressInfo">
+    <button type="button" id="addrSearch">search</button>
+    <table>
+        <colgroup>
+            <col style="width: 20%">
+            <col style="width: 20%">
+            <col style="width: 20%">
+            <col style="width: 20%">
+            <col style="width: 20%">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>address1</th>
+            <th>address2</th>
+            <th>nickname</th>
+        </tr>
+        </thead>
+        <tbody id="addressTable" style="text-align: center">
+            <tr th:each="item : ${addressInfo}">
+                <td th:text="${item.usersId}"></td>
+                <td th:text="${item.usersName}"></td>
+                <td th:text="${item.address1}"></td>
+                <td th:text="${item.address2}"></td>
+                <td th:text="${item.nickname}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" id="backToList">뒤로가기</button>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/address/addressInfo.js}"></script>
+</html>

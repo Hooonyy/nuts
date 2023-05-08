@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.prac.almond.app.product.mapper.ProductMapper">
+    <select id="findProductList" resultType="product">
+        select product_seq
+             , product_name
+             , product_imgPath
+             , product_price
+             , product_contents
+             , product_etc
+             , product_discount
+             , product_discount_code
+        from product
+    </select>
+    <!--productList-->
+    <select id="findProductPaging" resultType="product">
+        select product_seq
+             , product_name
+             , product_imgPath
+             , product_price
+             , product_contents
+             , product_etc
+             , product_discount
+             , product_discount_code
+             , (case product_discount_code
+                    when 'none' then product_price
+                    when 'percent' then product_price - (product_discount * 0.01 * product_price)
+                    when 'price' then product_price - product_discount
+                    else product_price
+            end) as discount_price
+             , product_isdel
+        from product
+        where product_isdel = 'N'
+            limit #{pageSize}
+        offset (#{pageNum}-1) * #{pageSize};
+    </select>
+    <select id="countProductList" resultType="int">
+        select count(1)
+        from product
+    </select>
+    <select id="findProductInfo" resultType="product">
+        select product_seq
+             , product_name
+             , product_imgPath
+             , product_price
+             , product_contents
+             , product_etc
+             , product_discount_code
+             , product_discount
+             , product_isdel
+        from product
+        where product_seq = #{productSeq};
+    </select>
+    <!--상품등록-->
+    <insert id="saveProductData">
+        INSERT INTO product
+        ( product_name
+        , product_imgPath
+        , product_price
+        , product_contents
+        , product_etc
+        , product_discount
+        , product_discount_code
+        , product_isdel)
+        VALUES ( #{productName}
+               , #{productImgPath}
+               , #{productPrice}
+               , #{productContents}
+               , #{productEtc}
+               , #{productDiscount}
+               , #{productDiscountCode}
+               , 'N');
+    </insert>
+    <update id="updateProductData">
+        update product
+        set
+        product_name = #{productName},
+        product_price = #{productPrice},
+        product_contents = #{productContents},
+        product_discount = #{productDiscount},
+        product_discount_code = #{productDiscountCode},
+        product_isdel = #{productIsdel}
+        <if test='fileUploadYn == "Y"'>
+            , product_imgPath = #{productImgpath}
+        </if>
+        where product_seq = #{productSeq}
+    </update>
+    <delete id="deleteProductData">
+        delete
+        from product
+        where product_seq = #{productSeq}
+    </delete>
+</mapper>

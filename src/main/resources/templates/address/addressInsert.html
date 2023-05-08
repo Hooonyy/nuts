@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="addressInsert">
+    <form method="POST" id="addressInsertForm" enctype="multipart/form-data">
+        <div>
+            <input id="userId">
+            <input type="hidden" id="usersSeq"><button type="button" id="search_user">id찾기</button><br>
+            <p>주소 : <input id="address1"><button type="button" id="search_daum">다음주소찾기</button></p>
+            <p>상세주소 : <input id="address2"></p>
+            <p>닉네임 : <input id="nickname"></p>
+            <p>대표배송지 : <input id="mainAddress" type="checkbox"></p>
+            <p>프로필 이미지 : <button type="button" id="chooseImage">선택하기</button></p>
+        </div>
+        <button type=button id="btnSave">유저배송지등록</button>
+    </form>
+</div>
+
+</body>
+<script type="text/javascript" th:src="@{/js/address/addressInsert.js}"></script>
+</html>
