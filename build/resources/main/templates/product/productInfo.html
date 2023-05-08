@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="productInfo">
+    <form method="post" id="productUpdateForm" enctype="multipart/form-data">
+        <div id="productData">
+            <input id="productSeq" type="hidden" th:value="${productInfo.productSeq}">
+            <p>상품이름 : <input id="productName" type="text" size="30" th:value="${productInfo.productName}"></p>
+            <p>상품이미지 : <img id="productImgpath" th:style="${'width:50px'}" th:src="${productInfo.productImgpath}"></p>
+            <p><a th:if="${productInfo}" th:href="@{'/download'(filePath=${productInfo.productImgpath})}" target="_blank" >이미지 다운로드</a></p>
+            <p>업로드 : <input type="file" id="chooseImage"></p>
+            <p>상품가격 : <input id="productPrice" type="text" size="30" th:value="${productInfo.productPrice}"></p>
+            <p>상품내용 : <input id="productContents" type="text" size="30" th:value="${productInfo.productContents}"></p>
+            <p>비고 : <input id="productEtc" type="text" size="30" th:value="${productInfo.productEtc}"></p>
+            <p>할인코드 :
+            <select th:field="${productInfo.productDiscountCode}">
+                <option th:value="none">none</option>
+                <option th:value="percent">%</option>
+                <option th:value="price">price</option>
+            </select></p>
+            <p>할인률 : <input id="productDiscount" type="number" th:value="${productInfo.productDiscount}"></p>
+            <p>삭제여부 : <input id="productIsdel" type="text" size="30" th:value="${productInfo.productIsdel}"></p>
+            <button type="button" id="backToList">뒤로가기</button>
+        </div>
+    </form>
+    <button type="button" id="updateProductInfo">수정</button>
+    <button type="button" id="deleteProductInfo">삭제</button>
+
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/product/productInfo.js}"></script>
+</html>

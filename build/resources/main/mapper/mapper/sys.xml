@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.prac.almond.app.system.mapper.SysMapper">
+    <select id="findSystemList" resultType="sys">
+        select sys_seq
+             , system_nm
+             , division_work
+             , institution_name
+             , tel
+             , email
+             , use_metasys_yn
+             , mainten_person
+             , mainten_tel
+             , mainten_email
+        from sys
+    </select>
+    <!--productList-->
+    <select id="findSystemPaging" resultType="sys">
+        select sys_seq
+             , system_nm
+             , division_work
+             , institution_name
+             , tel
+             , email
+             , use_metasys_yn
+             , mainten_person
+             , mainten_tel
+             , mainten_email
+        from sys limit #{pageSize}
+        offset (#{pageNum}-1) * #{pageSize};
+    </select>
+    <select id="countSystemList" resultType="int">
+        select count(1)
+        from sys
+    </select>
+    <!--시스템등록-->
+    <insert id="saveSystemData">
+        INSERT INTO sys
+        ( system_nm
+        , division_work
+        , institution_name
+        , tel
+        , email
+        , use_metasys_yn
+        , mainten_person
+        , mainten_tel
+        , mainten_email)
+        VALUES ( #{systemNm}
+               , #{divisionWork}
+               , #{institutionName}
+               , #{tel}
+               , #{email}
+               , #{useMetasysYn}
+               , #{maintenPerson}
+               , #{maintenTel}
+               , #{maintenEmail}
+        );
+    </insert>
+    <select id="findSystemInfo" resultType="sys">
+        select sys_seq
+             , system_nm
+             , division_work
+             , institution_name
+             , tel
+             , email
+             , use_metasys_yn
+             , mainten_person
+             , mainten_tel
+             , mainten_email
+        from sys
+        where sys_seq = #{sysSeq};
+    </select>
+    <update id="updateSystemData">
+        update sys
+        set
+        system_nm = #{systemNm},
+        division_work = #{divisionWork},
+        institution_name = #{institutionName},
+        tel = #{tel},
+        email = #{email},
+        use_metasys_yn = #{useMetasysYn},
+        mainten_person = #{maintenPerson},
+        mainten_tel = #{maintenTel},
+        mainten_email = #{maintenEmail}
+        where sys_seq = #{sysSeq}
+    </update>
+    <delete id="deleteSystemData">
+        delete
+        from sys
+        where sys_seq = #{sysSeq}
+    </delete>
+</mapper>

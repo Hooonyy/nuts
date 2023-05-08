@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="systemInfo">
+  <form method="post" id="systemUpdateForm" enctype="multipart/form-data">
+    <div id="systemData">
+      <input id="sysSeq" type="hidden" th:value="${systemInfo.sysSeq}">
+      <p>상품이름 : <input id="systemNm" type="text" size="30" th:value="${systemInfo.systemNm}"></p>
+      <p>상품이름 : <input id="divisionWork" type="text" size="30" th:value="${systemInfo.divisionWork}"></p>
+      <p>상품가격 : <input id="institutionName" type="text" size="30" th:value="${systemInfo.institutionName}"></p>
+      <p>상품내용 : <input id="tel" type="text" size="30" th:value="${systemInfo.tel}"></p>
+      <p>비고 : <input id="email" type="text" size="30" th:value="${systemInfo.email}"></p>
+      <p>할인률 : <input id="useMetasysYn" type="number" th:value="${systemInfo.useMetasysYn}"></p>
+      <p>삭제여부 : <input id="maintenPerson" type="text" size="30" th:value="${systemInfo.maintenPerson}"></p>
+      <p>삭제여부 : <input id="maintenTel" type="text" size="30" th:value="${systemInfo.maintenTel}"></p>
+      <p>삭제여부 : <input id="maintenEmail" type="text" size="30" th:value="${systemInfo.maintenEmail}"></p>
+      <button type="button" id="backToList">뒤로가기</button>
+    </div>
+  </form>
+  <button type="button" id="updateSystemInfo">수정</button>
+  <button type="button" id="deleteSystemInfo">삭제</button>
+
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/system/systemInfo.js}"></script>
+</html>

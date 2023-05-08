@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="loginBox">
+    <div>
+        <label for="usersId"></label><input type="text" id="usersId">
+        <label for="password"></label><input type="text" id="password">
+        <button type="button" id="loginBtn" >로그인</button>
+    </div>
+    <div>
+
+        <button type="button" id="registerUser">회원가입</button>
+        <button type="button" id="findIdPw">id/pw 찾기</button>
+    </div>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/main/login.js}"></script>
+</html>

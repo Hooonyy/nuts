@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/default_layout}" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!-- content -->
+<div layout:fragment="content">
+    <div id="userList">
+        <div id="searchArea">
+            <label for="searchUser"><input type="text" id="searchUser" placeholder="검색할 id를 입력하세요"></label>
+            <button type="button" id="searchUserId">search</button>
+        </div>
+        <div id="registerUserArea">
+            <button type="button" id="registerUserBtn">유저등록</button>
+        </div>
+        <div>
+            <button type="button" id="addressInsert">유저배송지등록</button>
+        </div>
+        <table id="userListTable">
+            <colgrdighoup>
+                <col style="width: 13%">
+                <col style="width: 13%">
+                <col style="width: 13%">
+                <col style="width: 13%">
+                <col style="width: 13%">
+                <col style="width: 13%">
+            </colgrdighoup>
+            <thead>
+            <tr>
+                <th>seq</th>
+                <th>id</th>
+                <th>name</th>
+                <th>address</th>
+                <th>age</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="userListTb" style="text-align: center">
+            </tbody>
+        </table>
+        <div>
+            <div id="pagingBox" style="text-align: center">
+                <div id="pagination"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/js/user/userList.js}"></script>
+    <style>
+        li {
+            list-style: none;
+            margin: 0 10px 0 10px;
+            padding: 0 10px 0 10px;
+            border: 0;
+            float: left;
+            cursor: pointer;
+        }
+    </style>
+</div>
+</body>
+
+</html>

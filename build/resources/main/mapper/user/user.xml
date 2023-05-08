@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.prac.almond.app.user.mapper.UserMapper">
+    <select id="findUserInfo" resultType="user">
+        select users_seq
+             , users_id
+             , password
+             , users_name
+             , address
+             , age
+             , file_path
+        from users
+        where users_seq = #{usersSeq};
+    </select>
+    <!-- userList 조회 -->
+    <select id="findUserList" resultType="user">
+        select users_seq
+        , users_id
+        , password
+        , users_name
+        , address
+        , age
+        from users
+        where 1=1
+        <if test="usersId != null and usersId != ''">
+            and users_id LIKE CONCAT('%', #{usersId}, '%')
+        </if>
+        limit #{pageSize} offset (#{pageNum} - 1) * #{pageSize}
+    </select>
+    <select id="countUserList" resultType="int">
+        select count(1)
+        from users
+        where 1=1
+        <if test="usersId != null and usersId != ''">
+            and users_id LIKE CONCAT('%', #{usersId}, '%')
+        </if>
+    </select>
+    <select id="checkUserId" resultType="int">
+        select count(users_id)
+        from users
+        where users_id = #{usersId};
+    </select>
+    <select id="loginList" resultType="int">
+        select users_id
+             , password
+        from users
+    </select>
+    <!-- 유저정보 등록 -->
+    <insert id="saveUserData">
+        INSERT INTO users
+        ( users_id
+        , password
+        , users_name
+        , address
+        , age
+        , file_path)
+        VALUES ( #{usersId}
+               , #{password}
+               , #{usersName}
+               , #{address}
+               , #{ageEncrypt}
+               , #{filePath});
+    </insert>
+    <update id="updateUserData">
+        update users
+        set users_name = #{usersName},
+        age = #{age},
+        address = #{address}
+        <if test='fileUploadYn == "Y"'>
+            , file_path = #{filePath}
+        </if>
+        where users_seq = #{usersSeq}
+    </update>
+    <delete id="deleteUserData">
+        delete
+        from users
+        where users_seq = ${usersSeq}
+    </delete>
+
+</mapper>

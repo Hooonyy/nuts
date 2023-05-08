@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--content-->
+<div layout:fragment="content">
+    <script type="text/javascript" ></script>
+    <!-- 파일서버 load -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <!-- 엑셀 load -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"></script>
+    <div id="productList">
+        <button type="button" id="excelFileExport" class="download">현재페이지 엑셀파일 다운로드</button>
+        <button type="button" id="allexcelFileExport" >전체페이지 엑셀파일 다운로드</button>
+        <div id="dvData">
+            <button id="registerProduct" type="button">상품등록</button>
+
+            <table id="productListTable">
+                <colgroup>
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>name</th>
+                    <th>img</th>
+                    <th>price</th>
+                    <th>contents</th>
+                    <th>etc</th>
+                    <th>discount code</th>
+                    <th>discount</th>
+                    <th>할인된 가격</th>
+                </tr>
+                </thead>
+                <tbody id="productListTb" style="text-align: center"></tbody>
+            </table>
+        </div>
+        <div>
+            <div id="pagingBox" style="text-align: center">
+                <div id="pagination"></div>
+            </div>
+        </div>
+        <script text="text/javascript" th:src="@{/js/main/main.js}"></script>
+        <script text="text/javascript" th:src="@{/js/product/productList.js}"></script>
+        <style>
+            li {
+                list-style: none;
+                margin: 0 10px 0 10px;
+                padding: 0 10px 0 10px;
+                border: 0;
+                float: left;
+                cursor: pointer;
+            }
+
+            img {
+                width: 150px;
+                height: 150px;
+            }
+        </style>
+    </div>
+</div>
+</body>
+</html>

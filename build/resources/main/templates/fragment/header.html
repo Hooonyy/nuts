@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+
+<div th:fragment="headerFragment">
+    <nav id="userProfile">
+        헤더영역
+        <table id="userProfileTable">
+            <colgroup>
+                <col style="width: 15%">
+                <col style="width: 15%">
+                <col style="width: 15%">
+                <col style="width: 15%">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>age</th>
+                <th>img</th>
+            </tr>
+            </thead>
+            <tbody id="userProfileTb" style="text-align: center">
+           <!-- <td id="usersId" th:text="${user.usersId}"></td>
+            <td id="name" th:text="${user.usersName}"></td>
+            <td id="age" th:text="${user.age}"></td>
+            <td>
+                <img id="filePath" th:src="${user.filePath}" th:style="${'width:50px'}">
+            </td>-->
+            </tbody>
+        </table>
+        <nav>
+            <ul>
+                <li><a href="http://localhost:8080/user" style="text-decoration: none">user</a></li>
+                <li><a href="http://localhost:8080/product" style="text-decoration: none">product</a></li>
+            </ul>
+        </nav>
+        <br>
+    </nav>
+</div>
+

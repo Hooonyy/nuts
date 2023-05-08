@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<div id="registerSystem">
+  <form method="POST" id="registerSystemForm" enctype="multipart/form-data">
+    <div>
+      <p>상품이름 : <input id="systemNm"></p>
+      <p>상품가격 : <input id="divisionWork"></p>
+      <p>상품내용 : <input id="institutionName"></p>
+      <p>비고 : <input id="tel"></p>
+      <p>상품 할인률(가격) : <input id="email"></p>
+      <p>상품 할인률(가격) : <input id="useMetasysYn"></p>
+      <p>상품 할인률(가격) : <input id="maintenPerson"></p>
+      <p>상품 할인률(가격) : <input id="maintenTel"></p>
+      <p>상품 할인률(가격) : <input id="maintenEmail"></p>
+    </div>
+    <button type="button" id="registerSystemBtn">등록</button>
+    <button type="button" id="backToList">뒤로가기</button>
+  </form>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/system/registerSystem.js}"></script>
+</html>

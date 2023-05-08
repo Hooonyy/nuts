@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.prac.almond.app.address.mapper.AddressMapper">
+
+    <!-- AddressInfo 조회 -->
+    <select id="findAddressInfo" resultType="address">
+        select ua.users_address_seq
+             , u.users_id
+             , u.users_name
+             , ua.users_seq
+             , ua.address1
+             , ua.address2
+             , ua.nickname
+             , ua.is_main_address
+        from users_address ua join users u on ua.users_seq = u.users_seq
+        where ua.users_seq = #{usersSeq}
+    </select>
+
+    <!-- 유저배송지정보 등록 -->
+    <insert id="saveAddressData">
+        INSERT INTO users_address
+        ( users_seq
+        , address1
+        , address2
+        , nickname
+        , is_main_address)
+        VALUES ( #{usersSeq}
+               , #{address1}
+               , #{address2}
+               , #{nickname}
+               , #{mainAddress});
+    </insert>
+
+    <!-- AddressMain Count -->
+    <select id="countMainAddr" resultType="int">
+        select count(is_main_address)
+        from users_address
+        where users_seq = #{usersSeq}
+    </select>
+    <update id="updateMainAddr">
+        update users_address
+        set is_main_address = 'N'
+        where users_seq = #{usersSeq}
+          and is_main_address = 'Y'
+    </update>
+</mapper>
